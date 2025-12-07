@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secured Profile Page</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <p>This page is only accessible to authenticated users.</p>
+
+    <div th:if="${claims != null}">
+        <h2>OIDC User Details</h2>
+        <p><strong>Full Name:</strong> <span th:text="${fullName}"></span></p>
+        <p><strong>Preferred Username:</strong> <span th:text="${preferredUsername}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${email}"></span></p>
+        <p><strong>Subject (ID):</strong> <span th:text="${subject}"></span></p>
+		<p><strong>Profile:</strong> <span th:text="${profile}"></span></p>
+
+        <h3>All Claims:</h3>
+        <pre><code th:text="${claims}"></code></pre>
+    </div>
+
+    <div th:if="${claims == null}">
+        <p>Could not retrieve user information.</p>
+    </div>
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>

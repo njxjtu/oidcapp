@@ -35,7 +35,9 @@ public class OidcClientController {
             model.addAttribute("preferredUsername", oidcUser.getPreferredUsername());
             model.addAttribute("email", oidcUser.getEmail());
             model.addAttribute("subject", oidcUser.getSubject());
+            model.addAttribute("profile", oidcUser.getProfile());
             model.addAttribute("claims", oidcUser.getClaims()); // All claims for debugging
+            System.out.println(oidcUser.getAttributes().toString());
         }
 
         // Redirects to a secured HTML page to display the user claims
