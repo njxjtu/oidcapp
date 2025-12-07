@@ -12,10 +12,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // Secure all endpoints except the homepage (optional)
             .authorizeHttpRequests(requests -> requests
-                .requestMatchers("/")
-                .permitAll()
                 .anyRequest()
                 .authenticated()
             )

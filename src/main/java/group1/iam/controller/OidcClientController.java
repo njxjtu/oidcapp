@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class OidcClientController {
 
     /**
-     * Public home page endpoint. This URL is allowed access by all users 
-     * (authenticated or unauthenticated) based on the SecurityConfig.
+     * Home page endpoint. This page is accessible after authentication.
      * @return The name of the Thymeleaf template (index.html).
      */
     @GetMapping("/")
     public String index() {
-        // This will allow you to access https://localhost:8454/ without being redirected
         return "index"; // Assuming you have an 'index.html' template
     }
 
@@ -27,7 +25,7 @@ public class OidcClientController {
      * @param model The model for passing data to the view.
      * @return The name of the Thymeleaf template (secured.html).
      */
-    @GetMapping("/secured/profile")
+    @GetMapping("/securedprofile")
     public String viewProfile(@AuthenticationPrincipal OidcUser oidcUser, Model model) {
         
         // 1. Check if the user is authenticated (should be, or Spring Security would intercept)
@@ -41,6 +39,6 @@ public class OidcClientController {
         }
 
         // Redirects to a secured HTML page to display the user claims
-        return "secured-profile"; 
+        return "securedprofile"; 
     }
 }
